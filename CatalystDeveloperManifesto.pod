@@ -1,0 +1,97 @@
+=head1 TITLE
+
+Catalyst Developers Manifesto - Guiding Principle's for Catalyst Development
+
+=head1 SUMMARY
+
+The following document attempts to lay out the principles as well as some
+specifics regarding developing on Catalyst Core.
+
+=head1 Catalyst Ethos
+
+Catalyst attempts to be a neutral core around which Model View Controller
+style web applications can be built.  It does not attempt to be a 'full stack'
+as it understand best practices and choices around which tools are best can
+change over time and it prefers not to choose sides in controversial or 
+preference oriented decisions regarding ORMs, templating languages, Event loops
+and underlying server software.  In this way Catalyst's stack is CPAN itself
+to the degree that is possible.
+
+That being said, it also is not afraid to promote best practice solutions for
+common development problems when such solutions garner considerable community
+mindshare and achieve a certain level of stability.  For example Catalyst was
+rewritten to support both Moose and PSGI when those standards achieved the level
+of acceptedness described.  In addition, in our desired to provide a useable,
+community approved approach to many problems in web development, we might offer
+examples and documentation using widely accepted frameworks such as Template
+Toolkit and DBIx::Class since they are very good choices for the problems they
+seek to solve.
+
+In addition, Catalyst prefers to stay as close as possible to standard Perl
+syntax, in support of the idea that Perl syntax is well suited for a large
+number of different problems and as such we'd prefer not to limit Perl's
+inherit flexibility.  We believe that by optimizing for the general rather
+than trying to target particular problems in web development, we end up
+with a platform that can scale in complexity equal to Perl's inherit ability
+to do so and as such Catalyst is an ideal platform for building complex
+applications that need development and support over the long term.  Choices
+made by the Catalyst development team need to consider this goal carefully.
+
+Catalyst also believes that it is very important to provide backward
+compatible support to the degree it is possible and balanced against our
+desire to move the Catalyst platform along with the times.
+
+=head1 Catalyst Release Blueprint
+
+Catalyst development will take place in 2-3 month cycles, with planning goals
+promoted and accepted by the community, reviews and end of cycle retrospectives
+communicated clearly and publicly.
+
+Tasks for a given development cycle may not be dependent, but should be stand
+alone and capable of being finished within the general time period.  Complex
+tasks must be broken down into interations that are useful in and of themselves
+and meaningfully releasable to CPAN.  Complex tasks following an iterative
+approach can run over several development cycles
+
+During a development cycle TRIAL releases cut from the current development
+branch may be released if they are useful and requested.
+
+=head2 Prototyping
+
+In cases where the desired features seem complex or indefinite, one may create
+a prototype of possible features as a means to explore different solutions to a
+given problem or to try and build community agreement on a solution to a complex
+problem.  In this case all such prototypes should be built around a well understood
+use case that sufficiently exercises the prototype as to reveal its pros and cons.
+
+=head1 Bug Patches / Regressions
+
+If a serious bug or regression in a existing stable release is discovered,
+patches and test cases for this should be against the tag or branch archiving
+the mentioned release, not against master or development branch, and a new
+release of Catalyst maybe be released out of band to deal with such issues.
+
+=head1 Catalyst Back Compat Policy
+
+Catalyst would prefer to accept some code complexity and developer burden in order
+to have stable code that can be upgraded with a minimal of effort.  That being said
+in order to allow the framework to move forward and to reduce the effort by our
+limited, volunteer development group, the follow rules around how to change Catalyst
+exist.
+
+When there is code who's presense is onerous in that it promotes very bad practices
+or that it prevents us from improving the code base in ways that clearly benefit the
+community, that code can be deprecated.  Ideally this deprecation will take place over
+several development cycles, starting with first warnings and then isolation of the
+code either via Catalyst configuration or removal to a stand alone plugin.  There is
+no set schedule for how long such a deprecation cycle should last, but it should
+reflect the magnitude of the change and the likelyhood of breaking people's code.
+
+One should be able to upgrade Catalyst in steps through a deprecation cycle by
+following upgrading and changelog notes to maintain compatbility.  The number of
+allowed ongoing deprecation cycles should be limited.  It should be desired that
+someone could maintain compatiblity via configuration options or stand alone
+plugins.
+
+=cut
+
